@@ -106,11 +106,11 @@ func (m *MongoDBChangeLogger) SaveChangeEvent(ce model.ChangeEvent) error {
 // TraverseForFieldValue walks through the supplied document of type primitive.D to locate and fetch the value of the
 // a specific field, whose field path is supplied as an array (for example, {"arr", "0", "field1"} denotes
 // the field "field1" of the first element of the array "arr").
-func TraverseForFieldValue(f []string, payload primitive.D) (interface{}, error) {
+func TraverseForFieldValue(f []string, payload primitive.D) interface{} {
 	f1 := f[0]
 	v1 := payload.Map()[f1]
 	if len(f) == 1 {
-		return v1, nil
+		return v1
 	}
 
 	f2 := f[1]
@@ -120,7 +120,7 @@ func TraverseForFieldValue(f []string, payload primitive.D) (interface{}, error)
 	}
 
 	if len(f) == 2 {
-		return v1, nil
+		return v1
 	}
 
 	return TraverseForFieldValue(f[2:], v1.(primitive.D))

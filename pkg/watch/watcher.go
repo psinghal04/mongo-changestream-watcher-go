@@ -79,11 +79,7 @@ func (m *MongoDBChangeStreamWatcher) extractChangeEvent(rawChange bson.Raw) (mod
 
 	// extract the user name of the change owner, assuming this is contained within the configured field of the full document.
 	// In case the field is not present, or if there is an error, this defaults to a blank value.
-	usr, err := db.TraverseForFieldValue(strings.Split(m.Config.UserFieldPath, "."), ce.FullDocument)
-	if err != nil {
-		log.Printf("ERROR: failed to extract the user name for the change owner for change ID %v due to error %v\n", ce.ID.TokenData, err)
-	}
-	ce.User, _ = usr.(string)
+	ce.User, _ = db.TraverseForFieldValue(strings.Split(m.Config.UserFieldPath, "."), ce.FullDocument).(string)
 
 	// if there is no need to record the full document for the current operation type, remove it
 	if !m.Config.CaptureFullDocument[ce.OperationType] {
