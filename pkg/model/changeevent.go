@@ -9,7 +9,7 @@ import (
 type ChangeEvent struct {
 	ID                ResumeToken         `bson:"_id" json:"_id"`
 	User              string              `bson:"user" json:"user"`
-	Timestamp         primitive.Timestamp `bson:"datetime" json:"timestamp"`
+	Timestamp         primitive.Timestamp `bson:"timestamp" json:"timestamp"`
 	OperationType     string              `bson:"operationType" json:"operationType"`
 	Database          string              `bson:"database" json:"database"`
 	Collection        string              `bson:"collection" json:"collection"`
