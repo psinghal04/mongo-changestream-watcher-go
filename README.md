@@ -4,6 +4,8 @@ events as audit records in a designated audit collection. If the watcher gets di
 for any reason, it will resume watching the stream from the point it left off before being disconnected, ensuring no 
 change events are lost.
 
+For details of how MongoDB change stream work, refer to https://docs.mongodb.com/manual/changeStreams
+
 ## Configuration
 The watcher program supports several configurable parameters, as illustrated below
 ```json

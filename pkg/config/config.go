@@ -18,8 +18,6 @@ type Configuration struct {
 	AuditDatabase   string `json:"auditDatabaseName"`
 	AuditCollection string `json:"auditDatabaseCollection"`
 
-	APIServicePort string `json:"port"`
-
 	CaptureFullDocument map[string]bool `json:"fullDocRecordOperations"`
 	Version             string          `json:"version"`
 }
@@ -53,9 +51,6 @@ func GetConfiguration() Configuration {
 	}
 	if v, ok := os.LookupEnv("AUDIT_COLLECTION"); ok {
 		c.AuditCollection = v
-	}
-	if v, ok := os.LookupEnv("API_PORT"); ok {
-		c.APIServicePort = v
 	}
 	if v, ok := os.LookupEnv("API_VERSION"); ok {
 		c.Version = v

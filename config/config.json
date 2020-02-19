@@ -6,7 +6,6 @@
   "auditDbUrl": "mongodb://@localhost:27017",
   "auditDatabaseName": "test",
   "auditDatabaseCollection": "audit",
-  "port": "3000",
   "fullDocRecordOperations": {
     "insert": true
   },
